@@ -9,12 +9,26 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/outputs.h>
+#include "keys_sv.h"
 
-#define nubs NON_US_BSLH
-#define sqot SINGLE_QUOTE
+#define NAV 1
+#define NUM 2
+#define SYM 3
+#define ADJ 4
+
+// Keycode defines
+#define VD_NEW          LC(LG(D))
+#define VD_LEFT         LC(LG(LEFT))
+#define VD_RIGHT        LC(LG(RIGHT))
+#define VD_CLOSE        LC(LG(F4))
 
 &mt     {
         retro-tap;
+         };
+
+&sk     {
+        release-after-ms = <2000>;
+        quick-release;
          };
 
 &sl     {
@@ -52,7 +66,7 @@
                 default_layer {
 //          -----------------------------------------               -----------------------------------------
 // ---------|   Q   |   W   |   E   |   R   |   T   |     split     |   Y   |   U   |   I   |   O   |   P   |---------
-// |  ESC   |----------------------------------------               ----------------------------------------|   DEL  |
+// |  ESC   |----------------------------------------               ----------------------------------------|  BSPC  |
 // ---------|   A   |   S   |   D   |   F   |   G   |     split     |   H   |   J   |   K   |   L   |   '   |---------
 // |  CTRL  |----------------------------------------               ----------------------------------------|   RET  |
 // ---------|   Z   |   X   |   C   |   D   |   V   |     split     |   K   |   H   |   ,   |   .   |   -   |---------
@@ -60,50 +74,70 @@
 //                          |  LGUI | LOWER | LSHFT |    ENC MUTE   | RAISE |  SPC  | ADJUST|
 //                          -----------------------------------------------------------------
       bindings = <
-    &kp ESC       &kp Q  &kp W   &kp F    &kp P  &kp B     /*split*/    &kp J  &kp L   &kp U     &kp Y   &kp SQT &kp DEL
-    &mt LCTRL TAB &kp A  &kp R   &kp S    &kp T  &kp G     /*split*/    &kp M  &kp N   &kp E     &kp I   &kp O   &kp RET
-                  &kp Z  &kp X   &kp C    &kp D  &kp V     /*split*/    &kp K  &kp H   &kp COMMA &kp DOT &kp MINUS 
-                       &mt LGUI LG(SPACE) &mo 1  &kp LSHFT  &kp C_MUTE  &mo 2  &kp SPACE &mo 3
+    &kp ESC &kp Q   &kp W   &kp F   &kp P   &kp B     /*split*/    &kp J   &kp L   &kp U   &kp Y   &none   &kp BSPC
+    &kp TAB &kp A   &kp R   &kp S   &kp T   &kp G     /*split*/    &kp M   &kp N   &kp E   &kp I   &kp O   &kp RET
+            &kp Z   &kp X   &kp C   &kp D   &kp V     /*split*/    &kp K   &kp H   &kp SV_COMMA &kp SV_DOT &kp SV_MINUS 
+                            &mo ADJ &mo NAV &kp LSHFT &kp C_MUTE   &mo SYM &kp SPACE &mo NUM
 
                         >;
                 sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
                 };
 
-                lower_layer {
+                navigation_layer {
 //          -----------------------------------------               ----------------------------------------- 
-// ---------|       |  HOME |   UP  |  END  |       |     split     |   %   |   7   |   8   |   9   |   =   |---------
-// |  ESC   |----------------------------------------               ----------------------------------------|   DEL  |
-// ---------| C LEFT|  LEFT | DOWN  | RIGHT |C RIGHT|     split     |   *   |   4   |   5   |   6   |   +   |---------
+// ---------|   ?   |   ?   |       |  LGUI | SLEEP |     split     |  HOME | PG UP | PG DN |  END  |       |---------
+// |  ESC   |----------------------------------------               ----------------------------------------|  BSPC  |
+// ---------|  LGUI |  LALT | LCTRL | LSHFT | CLOSE |     split     |  LEFT |  DOWN |   UP  | RIGHT |   Å   |---------
 // |  CTRL  |----------------------------------------               ----------------------------------------|   RET  |
-// ---------|       |  PGDN |       |  PGUP |       |     split     |   /   |   1   |   2   |   3   |   -   |---------
+// ---------| VD CLS| VD LFT| VD RGT| VD NEW|       |     split     |       |  TAB  |  INS  |   Ö   |   Ä   |---------
 //          -----------------------------------------               -----------------------------------------
-//                          |       |       |   ,   |     split     |   .   |  SPC  |   0   |
+//                          |       |       |       |     split     |       |  DEL  |       |
 //                          -------------------------               -------------------------
       bindings = <
-    &kp ESC   &none        &kp HOME  &kp UP   &kp END   &none         /*split*/   &kp LS(N5) &kp N7 &kp N8 &kp N9 &kp EQUAL  &kp DEL
-    &kp LCTRL &kp LC(LEFT) &kp LEFT  &kp DOWN &kp RIGHT &kp LC(RIGHT) /*split*/   &kp LS(N8) &kp N4 &kp N5 &kp N6 &kp PLUS   &kp RET
-              &none        &kp PG_DN &none    &kp PG_UP &none         /*split*/   &kp SLASH  &kp N1 &kp N2 &kp N3 &kp MINUS 
-                                     &none    &none     &kp COMMA     &kp B   &kp DOT    &kp SPACE &kp N0 
+    &trans  &kp C_AL_NEXT_TASK &kp C_AL_PREV_TASK &none &kp LGUI &kp C_SLEEP /*split*/   &kp HOME  &kp PG_UP &kp PG_DN &kp END   &none         &trans
+    &trans  &sk LGUI     &sk LALT     &sk LCTRL    &sk LSHFT    &kp LA(F4)   /*split*/   &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &sk SV_A_RING &trans
+            &kp VD_CLOSE &kp VD_LEFT  &kp VD_RIGHT &kp VD_NEW   &none        /*split*/   &none     &kp TAB   &kp INS   &kp SV_O_UMLAUT &kp SV_A_UMLAUT 
+                                      &trans       &trans       &trans       &trans      &trans    &kp DEL   &trans
 
                         >;
 
                 };
 
-                raise_layer {
-//          -----------------------------------------               -----------------------------------------
-// ---------|   @   |   $   |   €   |   ^   |   !   |     split     |   ?   |   ü   |   #   |   ö   |   `   |---------
-// |  ESC   |----------------------------------------               ----------------------------------------|   DEL  |
-// ---------|   ä   |   ß   |       |   °   |   &   |     split     |   *   |   (   |   )   |   ~   |   "   |---------
+                number_layer {
+//          -----------------------------------------               ----------------------------------------- 
+// ---------|   1   |   2   |   3   |   4   |   5   |     split     |   6   |   7   |   8   |   9   |   0   |---------
+// |  ESC   |----------------------------------------               ----------------------------------------|  BSPC  |
+// ---------|  LGUI |  LALT | LCTRL | LSHFT |  F11  |     split     |  F12  | LSHFT | LCTRL |  LALT |  LGUI |---------
 // |  CTRL  |----------------------------------------               ----------------------------------------|   RET  |
-// ---------|   {   |   }   |   [   |   ]   |   |   |     split     |   /   |   \   |   ;   |   :   |   _   |---------
+// ---------|  F1   |  F2   |  F3   |  F4   |  F5   |     split     |  F6   |  F7   |  F8   |  F9   |  F10  |---------
+//          -----------------------------------------               -----------------------------------------
+//                          |   ,   |   0   |   .   |     split     |       |       |       |
+//                          -------------------------               -------------------------
+      bindings = <
+    &trans  &kp N1     &kp N2    &kp N3    &kp N4    &kp N5    /*split*/   &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &trans
+    &trans  &sk LGUI   &sk LALT  &sk LCTRL &sk LSHFT &kp F12   /*split*/   &kp F11   &kp N4    &kp N5    &kp N6    &kp PLUS  &trans
+            &kp F1     &kp F2    &kp F3    &kp F4    &kp F5    /*split*/   &kp F6    &kp F7    &kp F8    &kp F9    &kp F10
+                              &kp SV_COMMA &kp N0    &kp SV_DOT &kp B      &trans    &trans    &trans
+
+                        >;
+
+                };
+
+                symbol_layer {
+//          -----------------------------------------               -----------------------------------------
+// ---------|   ´   |   `   |   ^   |   ~   |   ¨   |     split     |   '   |   \   |   <   |   >   |   +   |---------
+// |  ESC   |----------------------------------------               ----------------------------------------|  BSPC  |
+// ---------|   !   |   "   |   #   |   ¤   |   %   |     split     |   &   |   /   |   (   |   )   |   =   |---------
+// |  CTRL  |----------------------------------------               ----------------------------------------|   RET  |
+// ---------|   ?   |   @   |   £   |   $   |   |   |     split     |   *   |   {   |   [   |   ]   |   }   |---------
 //          -------------------------------------------------------------------------------------------------
-//                          |   <   |   >   | LSHIFT|    ENC MUTE   |       |  SPC  |       |
+//                          |       |   +   |  CAPS |    ENC MUTE   |       |  DEL  |       |
 //                          -----------------------------------------------------------------
       bindings = <
-    &kp ESC   &kp AT    &kp DOLLAR &kp RA(N5)    &kp RA(LS(N6))   &kp LS(N1)   /*split*/   &kp QUESTION &kp HASH   &kp RA(Y)     &kp GRAVE  &kp LS(SQT) &kp DEL
-    &kp LCTRL &kp RA(Q) &none      &kp RA(S)     &kp RA(LS(SEMI)) &kp LS(N7)   /*split*/   &kp LS(N8)   &kp LS(N9) &kp LS(N0)    &kp TILDE  &kp RA(P)   &kp RET
-              &kp LBRC  &kp RBRC   &kp LBKT      &kp RBKT         &kp PIPE     /*split*/   &kp SLASH    &kp BSLH   &kp SEMICOLON &kp COLON  &kp UNDER 
-                                   &kp LS(COMMA) &kp LS(DOT)      &kp LSHFT    &kp C_MUTE  &none        &kp SPACE  &none
+    &trans  &kp SV_ACUTE  &kp SV_GRAVE  &kp SV_CARET  &kp SV_TILDE  &kp SV_UMLAUT /*split*/   &kp SV_SQT    &kp SV_BSLH   &kp SV_LT     &kp SV_GT     &kp SV_PLUS   &trans
+    &trans  &kp SV_EXCL   &kp SV_DQT    &kp SV_POUND  &kp SV_CURREN &kp SV_PRCNT  /*split*/   &kp SV_AMPS   &kp SV_SLASH  &kp SV_LPAR   &kp SV_RPAR   &kp SV_EQUAL  &trans
+            &kp SV_QMARK  &kp SV_AT &kp SV_POUND_SIGN &kp SV_DLLR   &kp SV_PIPE   /*split*/   &kp SV_ASTRK  &kp SV_LBRC   &kp SV_LBKT   &kp SV_RBKT   &kp SV_RBRC
+                                        &trans        &kp SV_PLUS   &kp KC_CAPS   &trans      &trans        &trans        &trans
 
                         >;
                         
@@ -120,10 +154,10 @@
 //                          |       |  LALT |       |     split     |       |       |       |
 //                          -------------------------               -------------------------
       bindings = <
-    &rgb_ug RGB_BRI &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_EFF &rgb_ug RGB_SPI &rgb_ug RGB_TOG  /*split*/   &none  &kp F7  &kp F8  &kp F9  &kp F10  &none
-    &rgb_ug RGB_BRD &rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_EFR &rgb_ug RGB_SPD &none            /*split*/   &none  &kp F4  &kp F5  &kp F6  &kp F11  &none
-                    &reset          &bootloader     &bt BT_CLR      &bt BT_SEL 1    &bt BT_SEL 2     /*split*/   &none  &kp F1  &kp F2  &kp F3  &kp F12
-                                                    &none           &kp LALT        &none            &kp C_MUTE  &none  &none   &trans
+    &rgb_ug RGB_BRI &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_EFF &rgb_ug RGB_SPI &rgb_ug RGB_TOG  /*split*/   &none   &kp F7  &kp F8  &kp F9  &kp F10  &trans
+    &rgb_ug RGB_BRD &rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_EFR &rgb_ug RGB_SPD &none            /*split*/   &none   &kp F4  &kp F5  &kp F6  &kp F11  &trans
+                    &reset          &bootloader     &bt BT_CLR      &bt BT_SEL 1    &bt BT_SEL 2     /*split*/   &none   &kp F1  &kp F2  &kp F3  &kp F12
+                                                    &trans          &trans          &trans           &kp C_MUTE  &trans  &trans  &trans
                         >;
 
                 };
