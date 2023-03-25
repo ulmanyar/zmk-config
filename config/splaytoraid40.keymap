@@ -137,7 +137,7 @@
     &trans  &kp SV_ACUTE  &kp SV_GRAVE  &kp SV_CARET  &kp SV_TILDE  &kp SV_UMLAUT /*split*/   &kp SV_SQT    &kp SV_BSLH   &kp SV_LT     &kp SV_GT     &kp SV_PLUS   &trans
     &trans  &kp SV_EXCL   &kp SV_DQT    &kp SV_POUND  &kp SV_CURREN &kp SV_PRCNT  /*split*/   &kp SV_AMPS   &kp SV_SLASH  &kp SV_LPAR   &kp SV_RPAR   &kp SV_EQUAL  &trans
             &kp SV_QMARK  &kp SV_AT &kp SV_POUND_SIGN &kp SV_DLLR   &kp SV_PIPE   /*split*/   &kp SV_ASTRK  &kp SV_LBRC   &kp SV_LBKT   &kp SV_RBKT   &kp SV_RBRC
-                                        &trans        &kp SV_PLUS   &kp KC_CAPS   &trans      &trans        &trans        &trans
+                                        &trans        &kp SV_PLUS   &kp CAPS      &trans      &trans        &trans        &trans
 
                         >;
                         
