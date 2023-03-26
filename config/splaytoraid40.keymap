@@ -129,7 +129,7 @@
 //                          |       |       |       |     split     |       |  DEL  |       |
 //                          -------------------------               -------------------------
       bindings = <
-    &trans  &win_swapper &tab_swapper &none        &kp LGUI     &kp C_SLEEP  /*split*/   &kp HOME  &kp PG_UP &kp PG_DN &kp END   &none         &trans
+    &trans  &win_swap    &tab_swap    &none        &kp LGUI     &kp C_SLEEP  /*split*/   &kp HOME  &kp PG_UP &kp PG_DN &kp END   &none         &trans
     &trans  &sk LGUI     &sk LALT     &sk LCTRL    &sk LSHFT    &kp LA(F4)   /*split*/   &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &sk SV_A_RING &trans
             &kp VD_CLOSE &kp VD_LEFT  &kp VD_RIGHT &kp VD_NEW   &none        /*split*/   &none     &kp TAB   &kp INS   &kp SV_O_UMLAUT &kp SV_A_UMLAUT 
                                       &trans       &trans       &trans       &trans      &trans    &kp DEL   &trans
