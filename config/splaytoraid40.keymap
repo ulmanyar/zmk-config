@@ -58,7 +58,42 @@
                         key-positions = <15 16>;
                         bindings = <&kp TAB>;
                 };
+                combo_return {
+                        timeout-ms = <50>;
+                        key-positions = <21 22>;
+                        bindings = <&kp RET>;
+                };
         };
+
+
+        behaviors {
+                win_swap: win_swapper {
+                compatible = "zmk,behavior-tri-state";
+                label = "WIN SWAPPER";
+                #binding-cells = <0>;
+                bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+                ignored-key-positions = <16 19>;
+                };
+
+                tab_swap: tab_swapper {
+                compatible = "zmk,behavior-tri-state";
+                label = "TAB SWAPPER";
+                #binding-cells = <0>;
+                bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
+                ignored-key-positions = <16 19>;
+                };
+        };
+
+
+//          -----------------------------------------               -----------------------------------------
+// ---------|   1   |   2   |   3   |   4   |   5   |     split     |   6   |   7   |   8   |   9  |   10  |---------
+// |   0    |----------------------------------------               ----------------------------------------|   11   |
+// ---------|   13  |   14  |   15  |   16  |   17  |     split     |   18  |   19  |   20  |   21  |   22  |---------
+// |   12   |----------------------------------------               ----------------------------------------|   23   |
+// ---------|   24  |   25  |   26  |   27  |   28  |     split     |   29  |   30  |   31  |   32  |   33  |---------
+//          -------------------------------------------------------------------------------------------------
+//                          |   34  |   35  |   36  |       37      |   38  |   39  |   40  |
+//                          -----------------------------------------------------------------
 
         keymap {
                 compatible = "zmk,keymap";
@@ -77,7 +112,7 @@
     &kp ESC &kp Q   &kp W   &kp F   &kp P   &kp B     /*split*/    &kp J   &kp L   &kp U   &kp Y   &none   &kp BSPC
     &kp TAB &kp A   &kp R   &kp S   &kp T   &kp G     /*split*/    &kp M   &kp N   &kp E   &kp I   &kp O   &kp RET
             &kp Z   &kp X   &kp C   &kp D   &kp V     /*split*/    &kp K   &kp H   &kp SV_COMMA &kp SV_DOT &kp SV_MINUS 
-                            &mo ADJ &mo NAV &kp LSHFT &kp C_MUTE   &mo SYM &kp SPACE &mo NUM
+                            &mo ADJ &mo NAV &kp LSHFT &kp C_MUTE   &kp SPACE &mo SYM &mo NUM
 
                         >;
                 sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
@@ -94,7 +129,7 @@
 //                          |       |       |       |     split     |       |  DEL  |       |
 //                          -------------------------               -------------------------
       bindings = <
-    &trans  &kp C_AL_NEXT_TASK &kp C_AL_PREV_TASK &none &kp LGUI &kp C_SLEEP /*split*/   &kp HOME  &kp PG_UP &kp PG_DN &kp END   &none         &trans
+    &trans  &win_swapper &tab_swapper &none        &kp LGUI     &kp C_SLEEP  /*split*/   &kp HOME  &kp PG_UP &kp PG_DN &kp END   &none         &trans
     &trans  &sk LGUI     &sk LALT     &sk LCTRL    &sk LSHFT    &kp LA(F4)   /*split*/   &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &sk SV_A_RING &trans
             &kp VD_CLOSE &kp VD_LEFT  &kp VD_RIGHT &kp VD_NEW   &none        /*split*/   &none     &kp TAB   &kp INS   &kp SV_O_UMLAUT &kp SV_A_UMLAUT 
                                       &trans       &trans       &trans       &trans      &trans    &kp DEL   &trans
