@@ -4,10 +4,12 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: nickconway
       url-base: https://github.com/nickconway
+    - name: caksoylar
+      url-base: https://github.com/caksoylar
   projects:
     - name: zmk
-      remote: nickconway
-      revision: smart-interrupt
+      remote: caksoylar
+      revision: caksoylar/experimental
       import: app/west.yml
   self:
     path: config

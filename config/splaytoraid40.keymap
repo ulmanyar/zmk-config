@@ -109,7 +109,7 @@
 //                          |  LGUI | LOWER | LSHFT |    ENC MUTE   | RAISE |  SPC  | ADJUST|
 //                          -----------------------------------------------------------------
       bindings = <
-    &kp ESC &kp Q   &kp W   &kp F   &kp P   &kp B     /*split*/    &kp J   &kp L   &kp U   &kp Y   &none   &kp BSPC
+    &kp ESC &kp Q   &kp W   &kp F   &kp P   &kp B     /*split*/    &kp J   &kp L   &kp U   &kp Y   &key_repeat &kp BSPC
     &kp TAB &kp A   &kp R   &kp S   &kp T   &kp G     /*split*/    &kp M   &kp N   &kp E   &kp I   &kp O   &kp RET
             &kp Z   &kp X   &kp C   &kp D   &kp V     /*split*/    &kp K   &kp H   &kp SV_COMMA &kp SV_DOT &kp SV_MINUS 
                             &mo ADJ &mo NAV &kp LSHFT &kp C_MUTE   &kp SPACE &mo SYM &mo NUM
