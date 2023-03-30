@@ -3,8 +3,10 @@ manifest:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
     - name: nickconway
+      #Use branch smart-interrupt
       url-base: https://github.com/nickconway
     - name: caksoylar
+      #Use branch caksoylar/experimental
       url-base: https://github.com/caksoylar
   projects:
     - name: zmk
