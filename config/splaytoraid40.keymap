@@ -48,6 +48,11 @@
                         key-positions = <19 20 21>;
                         bindings = <&kp LC(BACKSPACE)>;
                 };
+                combo_backwards_del_term {
+                        timeout-ms = <45>;
+                        key-positions = <19 20 9>;
+                        bindings = <&kp LA(BACKSPACE)>;
+                };
                 combo_capslock {
                         timeout-ms = <50>;
                         key-positions = <16 19>;
@@ -152,7 +157,7 @@
     &trans  &kp N1     &kp N2    &kp N3    &kp N4    &kp N5    /*split*/   &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &trans
     &trans  &sk LGUI   &sk LALT  &sk LCTRL &sk LSHFT &kp F11   /*split*/   &kp F12   &sk LSHFT &sk LCTRL &sk LALT  &sk LGUI  &trans
             &kp F1     &kp F2    &kp F3    &kp F4    &kp F5    /*split*/   &kp F6    &kp F7    &kp F8    &kp F9    &kp F10
-                              &kp SV_COMMA &kp N0    &kp SV_DOT &kp B      &trans    &trans    &trans
+                              &kp SV_COMMA &kp N0    &kp SV_DOT &kp B      &trans    &trans    &to NUM
 
                         >;
 
@@ -192,7 +197,7 @@
     &out OUT_BLE &none        &none        &none        &none        &none        /*split*/   &none   &kp F7  &kp F8  &kp F9  &kp F10  &none
     &out OUT_USB &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5 /*split*/   &none   &kp F4  &kp F5  &kp F6  &kp F11  &none
                  &reset       &bootloader  &bt BT_CLR   &none        &none        /*split*/   &none   &kp F1  &kp F2  &kp F3  &kp F12
-                                           &trans       &trans       &trans       &kp C_MUTE  &trans  &trans  &trans
+                                           &trans       &trans       &trans       &kp C_MUTE  &trans  &trans  &to NUM
                         >;
 
                 };
