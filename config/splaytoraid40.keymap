@@ -120,7 +120,7 @@
                             &mo ADJ &mo NAV &kp LSHFT &to 1        &kp SPACE &mo SYM &mo NUM
 
                         >;
-                sensor-bindings = <&inc_dec_kp C(LEFT) C(RIGHT)>;
+                sensor-bindings = <&inc_dec_kp LC(LEFT) LC(RIGHT)>;
                 };
                 
                 // Setup multiple "default layers" with different encoder bindings and toggle using encoder button
@@ -132,7 +132,7 @@
                             &mo ADJ &mo NAV &kp LSHFT &to 0        &kp SPACE &mo SYM &mo NUM
 
                         >;
-                sensor-bindings = <&inc_dec_kp C(S(TAB)) C(TAB)>;
+                sensor-bindings = <&inc_dec_kp LC(LS(TAB)) LC(TAB)>;
                 };
 
                 navigation_layer {
