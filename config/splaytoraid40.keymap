@@ -11,10 +11,10 @@
 #include <dt-bindings/zmk/outputs.h>
 #include "keys_sv.h"
 
-#define NAV 1
-#define NUM 2
-#define SYM 3
-#define ADJ 4
+#define NAV 2
+#define NUM 3
+#define SYM 4
+#define ADJ 5
 
 // Keycode defines
 #define VD_NEW          LC(LG(D))
@@ -59,7 +59,7 @@
                         bindings = <&kp CAPSLOCK>;
                 };
                 combo_tab {
-                        timeout-ms = <50>;
+                        timeout-ms = <30>;
                         key-positions = <15 16>;
                         bindings = <&kp TAB>;
                 };
@@ -103,7 +103,7 @@
         keymap {
                 compatible = "zmk,keymap";
 
-                default_layer {
+                default_layer_enc_0 {
 //          -----------------------------------------               -----------------------------------------
 // ---------|   Q   |   W   |   E   |   R   |   T   |     split     |   Y   |   U   |   I   |   O   |   P   |---------
 // |  ESC   |----------------------------------------               ----------------------------------------|  BSPC  |
@@ -117,10 +117,22 @@
     &kp ESC &kp Q   &kp W   &kp F   &kp P   &kp B     /*split*/    &kp J   &kp L   &kp U   &kp Y   &key_repeat &kp BSPC
     &kp TAB &kp A   &kp R   &kp S   &kp T   &kp G     /*split*/    &kp M   &kp N   &kp E   &kp I   &kp O   &kp RET
             &kp Z   &kp X   &kp C   &kp D   &kp V     /*split*/    &kp K   &kp H   &kp SV_COMMA &kp SV_DOT &kp SV_MINUS 
-                            &mo ADJ &mo NAV &kp LSHFT &kp C_MUTE   &kp SPACE &mo SYM &mo NUM
+                            &mo ADJ &mo NAV &kp LSHFT &to 1        &kp SPACE &mo SYM &mo NUM
 
                         >;
-                sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+                sensor-bindings = <&inc_dec_kp C(LEFT) C(RIGHT)>;
+                };
+                
+                // Setup multiple "default layers" with different encoder bindings and toggle using encoder button
+                default_layer_enc_1 {
+      bindings = <
+    &kp ESC &kp Q   &kp W   &kp F   &kp P   &kp B     /*split*/    &kp J   &kp L   &kp U   &kp Y   &key_repeat &kp BSPC
+    &kp TAB &kp A   &kp R   &kp S   &kp T   &kp G     /*split*/    &kp M   &kp N   &kp E   &kp I   &kp O   &kp RET
+            &kp Z   &kp X   &kp C   &kp D   &kp V     /*split*/    &kp K   &kp H   &kp SV_COMMA &kp SV_DOT &kp SV_MINUS 
+                            &mo ADJ &mo NAV &kp LSHFT &to 0        &kp SPACE &mo SYM &mo NUM
+
+                        >;
+                sensor-bindings = <&inc_dec_kp C(S(TAB)) C(TAB)>;
                 };
 
                 navigation_layer {
@@ -157,7 +169,7 @@
     &trans  &kp N1     &kp N2    &kp N3    &kp N4    &kp N5    /*split*/   &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &trans
     &trans  &sk LGUI   &sk LALT  &sk LCTRL &sk LSHFT &kp F11   /*split*/   &kp F12   &sk LSHFT &sk LCTRL &sk LALT  &sk LGUI  &trans
             &kp F1     &kp F2    &kp F3    &kp F4    &kp F5    /*split*/   &kp F6    &kp F7    &kp F8    &kp F9    &kp F10
-                              &kp SV_COMMA &kp N0    &kp SV_DOT &kp B      &trans    &trans    &to 0
+                              &kp SV_COMMA &kp N0   &kp SV_DOT &trans      &trans    &trans    &tog NUM
 
                         >;
 
@@ -197,7 +209,7 @@
     &out OUT_BLE &none        &none        &none        &none        &none        /*split*/   &none   &kp F7  &kp F8  &kp F9  &kp F10  &none
     &out OUT_USB &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5 /*split*/   &none   &kp F4  &kp F5  &kp F6  &kp F11  &none
                  &reset       &bootloader  &bt BT_CLR   &none        &none        /*split*/   &none   &kp F1  &kp F2  &kp F3  &kp F12
-                                           &trans       &trans       &trans       &kp C_MUTE  &trans  &trans  &to NUM
+                                           &trans       &trans       &trans       &kp C_MUTE  &trans  &trans  &tog NUM
                         >;
 
                 };
