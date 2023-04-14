@@ -50,7 +50,7 @@
                 };
                 combo_backwards_del_term {
                         timeout-ms = <45>;
-                        key-positions = <19 20 9>;
+                        key-positions = <7 8 9>;
                         bindings = <&kp LA(BACKSPACE)>;
                 };
                 combo_capslock {
