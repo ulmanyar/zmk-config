@@ -73,19 +73,27 @@
 
         behaviors {
                 win_swap: win_swapper {
-                compatible = "zmk,behavior-tri-state";
-                label = "WIN SWAPPER";
-                #binding-cells = <0>;
-                bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
-                ignored-key-positions = <16 19>;
+                        compatible = "zmk,behavior-tri-state";
+                        label = "WIN SWAPPER";
+                        #binding-cells = <0>;
+                        bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+                        ignored-key-positions = <16 19>;
                 };
 
                 tab_swap: tab_swapper {
-                compatible = "zmk,behavior-tri-state";
-                label = "TAB SWAPPER";
-                #binding-cells = <0>;
-                bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
-                ignored-key-positions = <16 19>;
+                        compatible = "zmk,behavior-tri-state";
+                        label = "TAB SWAPPER";
+                        #binding-cells = <0>;
+                        bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
+                        ignored-key-positions = <16 19>;
+                };
+
+                vd_swap: vd_swapper {
+                        compatible = "zmk,behavior-mod-morph";
+                        label = "VD SWAPPER";
+                        #binding-cells = <0>;
+                        bindings = <&kp LC(LG(RIGHT))>, <&kp LC(LG(LEFT))>;
+                        mods = <(MOD_LSFT)>;
                 };
         };
 
@@ -146,7 +154,7 @@
 //                          |       |       |       |     split     |       |  DEL  |       |
 //                          -------------------------               -------------------------
       bindings = <
-    &trans  &win_swap    &tab_swap    &kp LA(LEFT) &kp LGUI     &kp LA(RIGHT)/*split*/   &kp HOME  &kp PG_DN &kp PG_UP &kp END   &none         &trans
+    &trans  &win_swap    &tab_swap    &vd_swap     &kp LGUI     &kp LA(LEFT) /*split*/   &kp HOME  &kp PG_DN &kp PG_UP &kp END   &none         &trans
     &trans  &sk LGUI     &sk LALT     &sk LCTRL    &sk LSHFT    &kp LA(F4)   /*split*/   &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp SV_A_RING &trans
             &kp VD_CLOSE &kp VD_LEFT  &kp VD_RIGHT &kp VD_NEW   &none        /*split*/   &none     &kp TAB   &kp INS   &kp SV_O_UMLAUT &kp SV_A_UMLAUT 
                                       &trans       &trans       &trans       &trans      &trans    &kp DEL   &trans
