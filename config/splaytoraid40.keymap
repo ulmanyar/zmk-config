@@ -95,6 +95,14 @@
                         bindings = <&kp LC(LG(RIGHT))>, <&kp LC(LG(LEFT))>;
                         mods = <(MOD_LSFT)>;
                 };
+
+                vd_mgr: vd_manager {
+                        compatible = "zmk,behavior-mod-morph";
+                        label = "VD MANAGER";
+                        #binding-cells = <0>;
+                        bindings = <&kp LC(LG(SV_D))>, <&kp LC(LG(F4))>;
+                        mods = <(MOD_LSFT)>;
+                };
         };
 
 
@@ -145,18 +153,18 @@
 
                 navigation_layer {
 //          -----------------------------------------               ----------------------------------------- 
-// ---------|   ?   |   ?   |       |  LGUI | SLEEP |     split     |  HOME | PG DN | PG UP |  END  |       |---------
+// ---------| WinSwp| TabSwp| VDSwp |  LGUI |  BACK |     split     |  HOME | PG DN | PG UP |  END  |       |---------
 // |  ESC   |----------------------------------------               ----------------------------------------|  BSPC  |
 // ---------|  LGUI |  LALT | LCTRL | LSHFT | CLOSE |     split     |  LEFT |  DOWN |   UP  | RIGHT |   Å   |---------
 // |  CTRL  |----------------------------------------               ----------------------------------------|   RET  |
-// ---------| VD CLS| VD LFT| VD RGT| VD NEW|       |     split     |       |  TAB  |  INS  |   Ö   |   Ä   |---------
+// ---------|       |       |       |       | VDMgr |     split     |       |  TAB  |  INS  |   Ö   |   Ä   |---------
 //          -----------------------------------------               -----------------------------------------
 //                          |       |       |       |     split     |       |  DEL  |       |
 //                          -------------------------               -------------------------
       bindings = <
     &trans  &win_swap    &tab_swap    &vd_swap     &kp LGUI     &kp LA(LEFT) /*split*/   &kp HOME  &kp PG_DN &kp PG_UP &kp END   &none         &trans
     &trans  &sk LGUI     &sk LALT     &sk LCTRL    &sk LSHFT    &kp LA(F4)   /*split*/   &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp SV_A_RING &trans
-            &kp VD_CLOSE &kp VD_LEFT  &kp VD_RIGHT &kp VD_NEW   &none        /*split*/   &none     &kp TAB   &kp INS   &kp SV_O_UMLAUT &kp SV_A_UMLAUT 
+            &none        &none        &none        &none        &vd_mgr      /*split*/   &none     &kp TAB   &kp INS   &kp SV_O_UMLAUT &kp SV_A_UMLAUT 
                                       &trans       &trans       &trans       &trans      &trans    &kp DEL   &trans
 
                         >;
