@@ -73,15 +73,15 @@
                         key-positions = <14 10>;
                         bindings = <&kp SV_O_UMLAUT>;
                 };
-                combo_arng {
-                        timeout-ms = <50>;
-                        key-positions = <15 10>;
-                        bindings = <&kp SV_A_RING>;
-                };
                 combo_auml {
                         timeout-ms = <50>;
-                        key-positions = <16 10>;
+                        key-positions = <15 10>;
                         bindings = <&kp SV_A_UMLAUT>;
+                };
+                combo_arng {
+                        timeout-ms = <50>;
+                        key-positions = <16 10>;
+                        bindings = <&kp SV_A_RING>;
                 };
         };
 
