@@ -68,20 +68,10 @@
                         key-positions = <21 22>;
                         bindings = <&kp RET>;
                 };
-                combo_ouml {
+                combo_esc {
                         timeout-ms = <50>;
-                        key-positions = <14 10>;
-                        bindings = <&kp SV_O_UMLAUT>;
-                };
-                combo_auml {
-                        timeout-ms = <50>;
-                        key-positions = <15 10>;
-                        bindings = <&kp SV_A_UMLAUT>;
-                };
-                combo_arng {
-                        timeout-ms = <50>;
-                        key-positions = <16 10>;
-                        bindings = <&kp SV_A_RING>;
+                        key-positions = <13 14>;
+                        bindings = <&kp ESC>;
                 };
         };
 
@@ -179,7 +169,7 @@
       bindings = <
     &trans  &win_swap    &tab_swap    &vd_swap     &kp LGUI     &kp LA(LEFT) /*split*/   &kp HOME  &kp PG_DN &kp PG_UP &kp END   &none         &trans
     &trans  &sk LGUI     &sk LALT     &sk LCTRL    &sk LSHFT    &kp LA(F4)   /*split*/   &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp SV_A_RING &trans
-            &none        &none        &none        &none        &vd_mgr      /*split*/   &none     &kp TAB   &kp INS   &kp SV_O_UMLAUT &kp SV_A_UMLAUT 
+            &none        &none        &none        &none        &vd_mgr      /*split*/   &kp TAB   &kp INS   &kp SV_O_UMLAUT &kp SV_A_UMLAUT &none
                                       &trans       &trans       &trans       &trans      &trans    &kp DEL   &trans
 
                         >;

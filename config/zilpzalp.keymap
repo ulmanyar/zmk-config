@@ -1,0 +1,207 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
+#include "keys_sv.h"
+
+#define CMK 0
+#define NAV 1
+#define SYM 2
+#define NUM 3
+#define FUN 4
+
+// Keycode defines
+#define VD_NEW          LC(LG(D))
+#define VD_LEFT         LC(LG(LEFT))
+#define VD_RIGHT        LC(LG(RIGHT))
+#define VD_CLOSE        LC(LG(F4))
+
+&mt     {
+        retro-tap;
+         };
+
+&sk     {
+        release-after-ms = <2000>;
+        quick-release;
+         };
+
+&sl     {
+         release-after-ms = <150>;
+         };
+
+//     __________________________  __________________________
+//    /     0  |  1  |  2  |  3  \/   4 |   5 |   6 |   7    \
+// |  8  |  9  | 10  | 11  | 12  /\  13 |  14 |  15 |  16 | 17  |
+//    \    18  | 19  | 20    /        \    21 |  22 |  23   /
+//          \    24  | 25  /            \  26 |  27    /
+//           --------------              --------------
+/ {
+        combos {
+                compatible = "zmk,combos";
+                combo_bksp {
+                        timeout-ms = <30>;
+                        key-positions = <14 15>;
+                        bindings = <&kp BACKSPACE>;
+                };
+                combo_backwards_del {
+                        timeout-ms = <45>;
+                        key-positions = <14 15 16>;
+                        bindings = <&kp LC(BACKSPACE)>;
+                };
+                combo_backwards_del_term {
+                        timeout-ms = <45>;
+                        key-positions = <5 6 7>;
+                        bindings = <&kp LA(BACKSPACE)>;
+                };
+                combo_capslock {
+                        timeout-ms = <50>;
+                        key-positions = <11 14>;
+                        bindings = <&kp CAPSLOCK>;
+                };
+                combo_tab {
+                        timeout-ms = <25>;
+                        key-positions = <10 11>;
+                        bindings = <&kp TAB>;
+                };
+                combo_return {
+                        timeout-ms = <50>;
+                        key-positions = <16 17>;
+                        bindings = <&kp RET>;
+                };
+                combo_esc {
+                        timeout-ms = <50>;
+                        key-positions = <8 9>;
+                        bindings = <&kp ESC>;
+                };
+                combo_fun {
+                        timeout-ms = <50>;
+                        key-positions = <26 27>;
+                        bindings = <&mo FUN>;
+                };
+                combo_q {
+                        timeout-ms = <50>;
+                        key-positions = <0 8>;
+                        bindings = <&kp Q>;
+                };
+                combo_z {
+                        timeout-ms = <50>;
+                        key-positions = <0 18>;
+                        bindings = <&kp Z>;
+                };
+                combo_g {
+                        timeout-ms = <50>;
+                        key-positions = <3 12>;
+                        bindings = <&kp G>;
+                };
+                combo_m {
+                        timeout-ms = <50>;
+                        key-positions = <4 13>;
+                        bindings = <&kp M>;
+                };
+                combo__ {
+                        timeout-ms = <50>;
+                        key-positions = <17 23>;
+                        bindings = <&kp _>;
+                };
+        };
+
+
+        behaviors {
+                win_swap: win_swapper {
+                        compatible = "zmk,behavior-tri-state";
+                        label = "WIN SWAPPER";
+                        #binding-cells = <0>;
+                        bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+                        ignored-key-positions = <11 14>;
+                };
+
+                tab_swap: tab_swapper {
+                        compatible = "zmk,behavior-tri-state";
+                        label = "TAB SWAPPER";
+                        #binding-cells = <0>;
+                        bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
+                        ignored-key-positions = <11 14>;
+                };
+
+                vd_swap: vd_swapper {
+                        compatible = "zmk,behavior-mod-morph";
+                        label = "VD SWAPPER";
+                        #binding-cells = <0>;
+                        bindings = <&kp LC(LG(RIGHT))>, <&kp LC(LG(LEFT))>;
+                        mods = <(MOD_LSFT)>;
+                };
+
+                vd_mgr: vd_manager {
+                        compatible = "zmk,behavior-mod-morph";
+                        label = "VD MANAGER";
+                        #binding-cells = <0>;
+                        bindings = <&kp LC(LG(SV_D))>, <&kp LC(LG(F4))>;
+                        mods = <(MOD_LSFT)>;
+                };
+        };
+
+// zilpzalp key numbers
+//     __________________________  __________________________
+//    /     0  |  1  |  2  |  3  \/   4 |   5 |   6 |   7    \
+// |  8  |  9  | 10  | 11  | 12  /\  13 |  14 |  15 |  16 | 17  |
+//    \    18  | 19  | 20    /        \    21 |  22 |  23   /
+//          \    24  | 25  /            \  26 |  27    /
+//           --------------              --------------
+
+/ {
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        colemak {
+            label = "CMK";
+
+            bindings = <
+                            &kp W       &kp F       &kp P       &kp B       &kp J       &kp L       &kp U       &kp Y
+                &kp A       &kp R       &kp S       &kp T       &kp V       &kp K       &kp N       &kp E       &kp I       &kp O
+                            &kp X       &kp C       &kp D                               &kp H       &kp SV_COMMA &kp SV_DOT
+                                        &mo NAV     &mt LSHFT ESC               &lt SYM SPACE       &mo NUM
+            >;
+        };
+        navigation_layer {
+            label = "NAV";
+
+            bindings = <
+                                &win_swap       &tab_swap       &vd_swap        &kp LGUI        &kp HOME        &kp PG_DN       &kp PG_UP       &kp END
+                &sk LGUI        &sk LALT        &sk LCTRL       &sk LSHFT       &vd_mgr         &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &kp SV_A_RING
+                                &none           &none           &none                                           &kp INS         &kp SV_O_UMLAUT &kp SV_A_UMLAUT
+                                                                &none           &none           &kp BSPC        &kp DEL
+            >;
+        };
+        symbol_layer {
+            label = "SYM";
+
+            bindings = <
+                                &kp SV_GRAVE    &kp SV_CARET    &kp SV_TILDE    &kp SV_UMLAUT   &kp SV_SQT      &kp SV_BSLH     &kp SV_LT       &kp SV_GT
+                &kp SV_EXCL     &kp SV_DQT      &kp SV_POUND    &kp SV_CURREN   &kp SV_PRCNT    &kp SV_AMPS     &kp SV_SLASH    &kp SV_LPAR     &kp SV_RPAR     &kp SV_RBRC
+                                &kp SV_AT     &kp SV_POUND_SIGN &kp SV_DLLR                                     &kp SV_LBRC     &kp SV_LBKT     &kp SV_RBKT
+                                                                &kp SV_PIPE     &kp SV_QMARK    &none           &kp SV_ASTRK
+            >;
+        };
+        number_layer {
+            label = "NUM";
+
+            bindings = <
+                                &kp N7          &kp N8          &kp N9          &kp SV_PLUS     &none           &none           &none           &none 
+                &kp SV_ACUTE    &kp N4          &kp N5          &kp N6          &kp SV_EQUAL    &none           &sk LSHFT       &sk LCTRL       &sk LALT        &sk LGUI
+                                &kp N1          &kp N2          &kp N3                                          &none           &none           &none
+                                                                &kp N0          &kp SV_DOT      &none           &none
+            >;
+        };
+        function_layer {
+            label = "FUN";
+
+            bindings = <
+                                &kp F1          &kp F2          &kp F3          &kp F4          &none           &none           &none           &none 
+                &none           &kp F5          &kp F6          &kp F7          &kp F8          &none           &sk LSHFT       &sk LCTRL       &sk LALT        &sk LGUI
+                                &kp F9          &kp F10         &kp F11                                         &none           &none           &none
+                                                                &kp F12         &none           &kp BSPC        &kp DEL
+            >;
+        };
+
+    };
+};
