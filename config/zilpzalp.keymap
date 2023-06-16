@@ -118,7 +118,7 @@
                         label = "WIN SWAPPER";
                         #binding-cells = <0>;
                         bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
-                        tap-ms = 2;
+                        tap-ms = <2>;
                         ignored-key-positions = <11 14>;
                 };
 
