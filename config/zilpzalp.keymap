@@ -84,7 +84,7 @@
                 };
                 combo_z {
                         timeout-ms = <50>;
-                        key-positions = <0 18>;
+                        key-positions = <8 18>;
                         bindings = <&kp Z>;
                 };
                 combo_g {
