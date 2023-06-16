@@ -15,6 +15,10 @@
 #define VD_RIGHT        LC(LG(RIGHT))
 #define VD_CLOSE        LC(LG(F4))
 
+&lt {
+        tapping-term-ms = <125>;
+};
+
 &mt {
         retro-tap;
 };
@@ -22,10 +26,6 @@
 &sk {
         release-after-ms = <2000>;
         quick-release;
-};
-
-&sl {
-        release-after-ms = <150>;
 };
 
 //     __________________________  __________________________
@@ -53,7 +53,7 @@
                         bindings = <&kp LA(BACKSPACE)>;
                 };
                 combo_capslock {
-                        timeout-ms = <50>;
+                        timeout-ms = <25>;
                         key-positions = <11 14>;
                         bindings = <&kp CAPSLOCK>;
                 };
@@ -67,23 +67,18 @@
                         key-positions = <16 17>;
                         bindings = <&kp RET>;
                 };
-                combo_esc {
-                        timeout-ms = <50>;
-                        key-positions = <8 9>;
-                        bindings = <&kp ESC>;
-                };
                 combo_fun {
                         timeout-ms = <50>;
                         key-positions = <26 27>;
                         bindings = <&mo FUN>;
                 };
                 combo_q {
-                        timeout-ms = <50>;
-                        key-positions = <0 8>;
+                        timeout-ms = <35>;
+                        key-positions = <8 9>;
                         bindings = <&kp Q>;
                 };
                 combo_z {
-                        timeout-ms = <50>;
+                        timeout-ms = <35>;
                         key-positions = <8 18>;
                         bindings = <&kp Z>;
                 };
@@ -99,7 +94,7 @@
                 };
                 combo__ {
                         timeout-ms = <50>;
-                        key-positions = <17 23>;
+                        key-positions = <8 17>;
                         bindings = <&kp SV_MINUS>;
                 };
                 combo_bootloader {
@@ -123,6 +118,7 @@
                         label = "WIN SWAPPER";
                         #binding-cells = <0>;
                         bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+                        tap-ms = 2;
                         ignored-key-positions = <11 14>;
                 };
 
