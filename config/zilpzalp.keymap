@@ -35,6 +35,14 @@
 //          \    24  | 25  /            \  26 |  27    /
 //           --------------              --------------
 / {
+        conditional_layers {
+                compatible = "zmk,conditional-layers";
+                tri_layer {
+                        if-layers = <NUM FUN>;
+                        then-layer = <FUN>;
+                };
+        };
+
         combos {
                 compatible = "zmk,combos";
                 combo_bksp {
@@ -113,6 +121,15 @@
 
 
         behaviors {
+                nl: nested_layer {
+                        compatible = "zmk,behavior-tri-state";
+                        label = "WIN SWAPPER";
+                        #binding-cells = <0>;
+                        bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+                        tap-ms = <2>;
+                        ignored-key-positions = <11 14>;
+                };
+
                 win_swap: win_swapper {
                         compatible = "zmk,behavior-tri-state";
                         label = "WIN SWAPPER";
@@ -194,7 +211,7 @@
             bindings = <
                                 &kp N7          &kp N8          &kp N9          &kp SV_PLUS     &none           &none           &none           &none 
                 &kp SV_ACUTE    &kp N4          &kp N5          &kp N6          &kp SV_EQUAL    &none           &sk LSHFT       &sk LCTRL       &sk LALT        &sk LGUI
-                                &kp N1          &kp N2          &kp N3                                          &none           &none           &none
+                                &kp N1          &kp N2          &kp N3                                          &none           &none           &tog FUN
                                                                 &kp N0          &kp SV_DOT      &none           &none
             >;
         };
