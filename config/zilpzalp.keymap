@@ -75,11 +75,6 @@
                         key-positions = <16 17>;
                         bindings = <&kp RET>;
                 };
-                combo_fun {
-                        timeout-ms = <50>;
-                        key-positions = <26 27>;
-                        bindings = <&mo FUN>;
-                };
                 combo_q {
                         timeout-ms = <35>;
                         key-positions = <8 9>;
@@ -90,15 +85,22 @@
                         key-positions = <8 18>;
                         bindings = <&kp Z>;
                 };
-                combo_g {
-                        timeout-ms = <50>;
-                        key-positions = <3 12>;
-                        bindings = <&kp G>;
-                };
                 combo_m {
                         timeout-ms = <50>;
                         key-positions = <4 13>;
                         bindings = <&kp M>;
+                };
+                combo_g {
+                        timeout-ms = <50>;
+                        key-positions = <3 12>;
+                        bindings = <&kp G>;
+                        layers = <CMK NAV SYM FUN>;
+                };
+                combo_eql {
+                        timeout-ms = <50>;
+                        key-positions = <3 12>;
+                        bindings = <&kp SV_EQUAL>;
+                        layers = <NUM>;
                 };
                 combo__ {
                         timeout-ms = <50>;
@@ -121,15 +123,6 @@
 
 
         behaviors {
-                nl: nested_layer {
-                        compatible = "zmk,behavior-tri-state";
-                        label = "WIN SWAPPER";
-                        #binding-cells = <0>;
-                        bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
-                        tap-ms = <2>;
-                        ignored-key-positions = <11 14>;
-                };
-
                 win_swap: win_swapper {
                         compatible = "zmk,behavior-tri-state";
                         label = "WIN SWAPPER";
@@ -199,19 +192,19 @@
             label = "SYM";
 
             bindings = <
-                                &kp SV_GRAVE    &kp SV_CARET    &kp SV_TILDE    &kp SV_UMLAUT   &kp SV_SQT      &kp SV_BSLH     &kp SV_LT       &kp SV_GT
-                &kp SV_EXCL     &kp SV_DQT      &kp SV_POUND    &kp SV_CURREN   &kp SV_PRCNT    &kp SV_AMPS     &kp SV_SLASH    &kp SV_LPAR     &kp SV_RPAR     &kp SV_RBRC
-                                &kp SV_AT     &kp SV_POUND_SIGN &kp SV_DLLR                                     &kp SV_LBRC     &kp SV_LBKT     &kp SV_RBKT
-                                                                &kp SV_PIPE     &kp SV_QMARK    &none           &kp SV_ASTRK
+                                &kp SV_EXCL     &kp SV_LT       &kp SV_LBKT     &kp SV_SLASH    &kp SV_BSLH     &kp SV_RBKT     &kp SV_GT       &kp SV_QMARK
+                &kp SV_PIPE     &kp SV_DQT      &kp SV_LBRC     &kp SV_LPAR     &kp SV_PRCNT    &kp SV_AMPS     &kp SV_RPAR     &kp SV_RBRC     &kp SV_SQT      &kp SV_UNDER
+                                &kp SV_AT       &kp SV_POUND    &kp SV_DLLR                                     &kp SV_PLUS     &kp SV_EQUAL    &kp SV_ASTRK
+                                                                &none           &none           &none           &none
             >;
         };
         number_layer {
             label = "NUM";
 
             bindings = <
-                                &kp N7          &kp N8          &kp N9          &kp SV_PLUS     &none           &none           &none           &tog FUN 
-                &kp SV_ACUTE    &kp N4          &kp N5          &kp N6          &kp SV_EQUAL    &none           &sk LSHFT       &sk LCTRL       &sk LALT        &sk LGUI
-                                &kp N1          &kp N2          &kp N3                                          &none           &none           &none
+                                &kp N7          &kp N8          &kp N9          &kp SV_PLUS     &kp SV_ACUTE    &kp SV_CARET    &kp SV_TILDE    &kp SV_UMLAUT
+                &kp SV_ASTRK    &kp N4          &kp N5          &kp N6          &kp SV_MINUS    &kp SV_GRAVE    &sk LSHFT       &sk LCTRL       &sk LALT        &sk LGUI
+                                &kp N1          &kp N2          &kp N3                                          &kp SV_CURREN   &kp SV_POUND_SIGN &tog FUN 
                                                                 &kp N0          &kp SV_DOT      &none           &none
             >;
         };
@@ -222,7 +215,7 @@
                                 &kp F7          &kp F8          &kp F9          &kp F10         &trans          &trans          &trans          &trans
                 &none           &kp F4          &kp F5          &kp F6          &kp F11         &trans          &sk LSHFT       &sk LCTRL       &sk LALT        &sk LGUI
                                 &kp F1          &kp F2          &kp F3                                          &trans          &trans          &trans
-                                                                &kp F12         &none           &kp BSPC        &kp DEL
+                                                                &kp F12         &none           &none           &none
             >;
         };
 
