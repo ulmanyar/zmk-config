@@ -148,7 +148,7 @@
                 default_layer_enc_1 {
       bindings = <
     &kp ESC &kp Q   &kp W   &kp F   &kp P   &kp B     /*split*/    &kp J   &kp L   &kp U   &kp Y   &key_repeat &kp BSPC
-    &kp TAB &kp A   &kp R   &kp S   &kp T   &kp G     /*split*/    &kp M   &kp N   &kp E   &kp I   &kp O   &kp RET
+    &kp TAB &kp A   &kp R   &kp S   &kp T   &kp G     /*split*/    &kp M   &kp N   &kp E   &kp I   &kp O       &kp RET
             &kp Z   &kp X   &kp C   &kp D   &kp V     /*split*/    &kp K   &kp H   &kp SV_COMMA &kp SV_DOT &kp SV_MINUS 
                             &mo SYM &mo NAV &kp LSHFT &to 0        &kp SPACE &mo NUM &mo ADJ
 
@@ -158,19 +158,19 @@
 
                 navigation_layer {
 //          -----------------------------------------               ----------------------------------------- 
-// ---------| WinSwp| TabSwp| VDSwp |  LGUI |  BACK |     split     |  HOME | PG DN | PG UP |  END  |       |---------
+// ---------|  BACK | WinSwp| TabSwp| VDSwp |  LGUI |     split     |  HOME | PG DN | PG UP |  END  |       |---------
 // |  ESC   |----------------------------------------               ----------------------------------------|  BSPC  |
-// ---------|  LGUI |  LALT | LCTRL | LSHFT | CLOSE |     split     |  LEFT |  DOWN |   UP  | RIGHT |   Å   |---------
+// ---------|  LGUI |  LALT | LCTRL | LSHFT |       |     split     |  LEFT |  DOWN |   UP  | RIGHT |       |---------
 // |  CTRL  |----------------------------------------               ----------------------------------------|   RET  |
-// ---------|       |       |       |       | VDMgr |     split     |       |  TAB  |  INS  |   Ö   |   Ä   |---------
+// ---------|       |       |       |       | VDMgr |     split     |  TAB  |  INS  |   Ö   |   Ä   |   Å   |---------
 //          -----------------------------------------               -----------------------------------------
-//                          |       |       |       |     split     |       |  DEL  |       |
+//                          |       |       | A(F4) |     split     |  BSPC |  DEL  |       |
 //                          -------------------------               -------------------------
       bindings = <
-    &trans  &win_swap    &tab_swap    &vd_swap     &kp LGUI     &kp LA(LEFT) /*split*/   &kp HOME  &kp PG_DN &kp PG_UP &kp END   &none         &trans
-    &trans  &sk LGUI     &sk LALT     &sk LCTRL    &sk LSHFT    &kp LA(F4)   /*split*/   &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp SV_A_RING &trans
-            &none        &none        &none        &none        &vd_mgr      /*split*/   &kp TAB   &kp INS   &kp SV_O_UMLAUT &kp SV_A_UMLAUT &none
-                                      &trans       &trans       &trans       &trans      &trans    &kp DEL   &trans
+    &trans  &kp LA(LEFT) &win_swap    &tab_swap    &vd_swap     &kp LGUI     /*split*/   &kp HOME  &kp PG_DN &kp PG_UP &kp END   &none         &trans
+    &trans  &sk LGUI     &sk LALT     &sk LCTRL    &sk LSHFT    &none        /*split*/   &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &none         &trans
+            &none        &none        &none        &none        &vd_mgr      /*split*/   &kp TAB   &kp INS   &kp SV_O_UMLAUT &kp SV_A_UMLAUT &kp SV_A_RING
+                                      &trans       &trans       &kp LA(F4)   &trans      &kp BSPC  &kp DEL   &trans
 
                         >;
 
@@ -178,18 +178,18 @@
 
                 symbol_layer {
 //          -----------------------------------------               -----------------------------------------
-// ---------|   ´   |   `   |   ^   |   ~   |   ¨   |     split     |   '   |   \   |   <   |   >   |   +   |---------
+// ---------|   £   |   !   |   <   |   [   |   /   |     split     |   \   |   ]   |   >   |   ?   |   +   |---------
 // |  ESC   |----------------------------------------               ----------------------------------------|  BSPC  |
-// ---------|   !   |   "   |   #   |   ¤   |   %   |     split     |   &   |   /   |   (   |   )   |   =   |---------
+// ---------|   ¤   |   "   |   {   |   (   |   %   |     split     |   &   |   )   |   }   |   '   |   =   |---------
 // |  CTRL  |----------------------------------------               ----------------------------------------|   RET  |
-// ---------|   ?   |   @   |   £   |   $   |   |   |     split     |   *   |   {   |   [   |   ]   |   }   |---------
+// ---------|   |   |   @   |   £   |   $   |   |   |     split     |   -   |   +   |   =   |   *   |   _   |---------
 //          -------------------------------------------------------------------------------------------------
 //                          |       |       |  CAPS |    ENC MUTE   |       |       |       |
 //                          -----------------------------------------------------------------
       bindings = <
-    &trans  &kp SV_ACUTE  &kp SV_GRAVE  &kp SV_CARET  &kp SV_TILDE  &kp SV_UMLAUT /*split*/   &kp SV_SQT    &kp SV_BSLH   &kp SV_LT     &kp SV_GT     &kp SV_PLUS   &trans
-    &trans  &kp SV_EXCL   &kp SV_DQT    &kp SV_POUND  &kp SV_CURREN &kp SV_PRCNT  /*split*/   &kp SV_AMPS   &kp SV_SLASH  &kp SV_LPAR   &kp SV_RPAR   &kp SV_EQUAL  &trans
-            &kp SV_QMARK  &kp SV_AT &kp SV_POUND_SIGN &kp SV_DLLR   &kp SV_PIPE   /*split*/   &kp SV_ASTRK  &kp SV_LBRC   &kp SV_LBKT   &kp SV_RBKT   &kp SV_RBRC
+ &trans &kp SV_POUND_SIGN &kp SV_EXCL   &kp SV_LT     &kp SV_LBKT   &kp SV_SLASH  /*split*/   &kp SV_BSLH   &kp SV_RBKT   &kp SV_GT     &kp SV_QMARK  &kp SV_PLUS   &trans
+    &trans  &kp SV_CURREN &kp SV_DQT    &kp SV_LBRC   &kp SV_LPAR   &kp SV_PRCNT  /*split*/   &kp SV_AMPS   &kp SV_RPAR   &kp SV_RBRC   &kp SV_SQT    &kp SV_EQUAL  &trans
+            &kp SV_PIPE   &kp SV_AT     &kp SV_POUND  &kp SV_DLLR   &kp SV_PIPE   /*split*/   &kp SV_MINUS  &kp SV_PLUS   &kp SV_EQUAL  &kp SV_ASTRK  &kp SV_UNDER
                                         &trans        &trans        &kp CAPS      &trans      &trans        &trans        &trans
 
                         >;
@@ -198,19 +198,19 @@
 
                 number_layer {
 //          -----------------------------------------               ----------------------------------------- 
-// ---------|   1   |   2   |   3   |   4   |   5   |     split     |   6   |   7   |   8   |   9   |   0   |---------
+// ---------|       |   7   |   8   |   9   |   +   |     split     |   ´   |   ^   |   ~   |   ¨   |       |---------
 // |  ESC   |----------------------------------------               ----------------------------------------|  BSPC  |
-// ---------|  LGUI |  LALT | LCTRL | LSHFT |  F11  |     split     |  F12  | LSHFT | LCTRL |  LALT |  LGUI |---------
+// ---------|   /   |   4   |   5   |   6   |   =   |     split     |   `   | LSHFT | LCTRL |  LALT |  LGUI |---------
 // |  CTRL  |----------------------------------------               ----------------------------------------|   RET  |
-// ---------|  F1   |  F2   |  F3   |  F4   |  F5   |     split     |  F6   |  F7   |  F8   |  F9   |  F10  |---------
+// ---------|   *   |   1   |   2   |   3   |   -   |     split     |  F6   |       |       |       |       |---------
 //          -----------------------------------------               -----------------------------------------
 //                          |   ,   |   0   |   .   |     split     |       |  NUM  |       |
 //                          -------------------------               -------------------------
       bindings = <
-    &trans  &kp N1     &kp N2    &kp N3    &kp N4    &kp N5    /*split*/   &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &trans
-    &trans  &sk LGUI   &sk LALT  &sk LCTRL &sk LSHFT &kp F11   /*split*/   &kp F12   &sk LSHFT &sk LCTRL &sk LALT  &sk LGUI  &trans
-            &kp F1     &kp F2    &kp F3    &kp F4    &kp F5    /*split*/   &kp F6    &kp F7    &kp F8    &kp F9    &kp F10
-                                 &trans    &kp N0   &kp SV_DOT &trans      &trans    &tog NUM  &trans
+    &trans  &none        &kp N7    &kp N8    &kp N9   &kp SV_PLUS  /*split*/ &kp SV_ACUTE &kp SV_CARET &kp SV_TILDE &kp SV_UMLAUT &none        &trans
+    &trans  &kp SV_SLASH &kp N4    &kp N5    &kp N6   &kp SV_EQUAL /*split*/ &kp SV_GRAVE &sk LSHFT    &sk LCTRL    &sk LALT      &sk LGUI     &trans
+            &kp SV_ASTRK &kp N1    &kp N2    &kp N3   &kp SV_MINUS /*split*/ &none        &none        &none        &none         &none  
+                                &kp SV_COMMA &kp N0   &kp SV_DOT    &trans   &trans       &tog NUM     &trans
 
                         >;
 
@@ -218,19 +218,19 @@
 
                 adjust_layer {
 //          -----------------------------------------               -----------------------------------------
-// ---------|       |       |       |       |       |     split     |       |   F7  |   F8  |   F9  |  F10  |---------
-// | O BLE  |----------------------------------------               ----------------------------------------|        |
-// ---------|  BT1  |  BT2  |  BT3  |  BT4  |  BT5  |     split     |       |   F4  |   F5  |   F6  |  F11  |---------
-// | O USB  |----------------------------------------               ----------------------------------------|        |
-// ---------| RESET |  BOOT | BT CLR|       |       |     split     |       |   F1  |   F2  |   F3  |  F12  |---------
+// ---------|       |   F7  |   F8  |   F9  |  F10  |     split     |  BT1  |  BT2  |  BT3  |  BT4  |  BT5  |---------
+// |        |----------------------------------------               ----------------------------------------| O BLE  |
+// ---------|       |   F4  |   F5  |   F6  |  F11  |     split     |       | LSHFT | LCTRL |  LALT |  LGUI |---------
+// |        |----------------------------------------               ----------------------------------------| O USB  |
+// ---------|       |   F1  |   F2  |   F3  |  F12  |     split     | RESET |  BOOT | BT CLR|       |       |---------
 //          -----------------------------------------               -----------------------------------------
-//                          |       |  LALT |       |     split     |       |       |       |
+//                          |       |       |       |     split     |       |       |       |
 //                          -------------------------               -------------------------
       bindings = <
-    &out OUT_BLE &none        &none        &none        &none        &none        /*split*/   &none   &kp F7  &kp F8  &kp F9  &kp F10  &none
-    &out OUT_USB &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5 /*split*/   &none   &kp F4  &kp F5  &kp F6  &kp F11  &none
-                 &sys_reset   &bootloader  &bt BT_CLR   &none        &none        /*split*/   &none   &kp F1  &kp F2  &kp F3  &kp F12
-                                           &trans       &trans       &trans       &kp C_MUTE  &trans  &tog NUM &trans  
+    &none   &none   &kp F7  &kp F8  &kp F9  &kp F10 /*split*/   &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5  &out OUT_BLE
+    &none   &none   &kp F4  &kp F5  &kp F6  &kp F11 /*split*/   &none        &sk LSHFT    &sk LCTRL    &sk LALT     &sk LGUI      &out OUT_USB
+            &none   &kp F1  &kp F2  &kp F3  &kp F12 /*split*/   &sys_reset   &bootloader  &bt BT_CLR   &none        &none       
+                            &trans  &trans  &trans &kp C_MUTE   &trans       &tog NUM     &trans  
                         >;
 
                 };
