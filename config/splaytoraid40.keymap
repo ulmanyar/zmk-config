@@ -108,6 +108,14 @@
                         bindings = <&kp LC(LG(SV_D))>, <&kp LC(LG(F4))>;
                         mods = <(MOD_LSFT)>;
                 };
+
+                prev_next: previous_next {
+                        compatible = "zmk,behavior-mod-morph";
+                        label = "PREVIOUS NEXT";
+                        #binding-cells = <0>;
+                        bindings = <&kp LA(LEFT)>, <&kp LA(RIGHT)>;
+                        mods = <(MOD_LSFT)>;
+                };
         };
 
 
@@ -135,8 +143,8 @@
 //                          |  LGUI | LOWER | LSHFT |    ENC FCN    | RAISE |  SPC  | ADJUST|
 //                          -----------------------------------------------------------------
       bindings = <
-    &kp ESC &kp Q   &kp W   &kp F   &kp P   &kp B     /*split*/    &kp J   &kp L   &kp U   &kp Y   &key_repeat &kp BSPC
-    &kp TAB &kp A   &kp R   &kp S   &kp T   &kp G     /*split*/    &kp M   &kp N   &kp E   &kp I   &kp O   &kp RET
+    &kp ESC &kp Q   &kp W   &kp F   &kp P   &kp B     /*split*/    &kp J   &kp L   &kp U   &kp Y   &kp SV_A_RING    &kp SV_A_UMLAUT
+    &kp TAB &kp A   &kp R   &kp S   &kp T   &kp G     /*split*/    &kp M   &kp N   &kp E   &kp I   &kp O            &kp SV_O_UMLAUT
             &kp Z   &kp X   &kp C   &kp D   &kp V     /*split*/    &kp K   &kp H   &kp SV_COMMA &kp SV_DOT &kp SV_MINUS 
                             &mo SYM &mo NAV &kp LSHFT &to 1        &kp SPACE &mo NUM &mo ADJ
 
@@ -147,8 +155,8 @@
                 // Setup multiple "default layers" with different encoder bindings and toggle using encoder button
                 default_layer_enc_1 {
       bindings = <
-    &kp ESC &kp Q   &kp W   &kp F   &kp P   &kp B     /*split*/    &kp J   &kp L   &kp U   &kp Y   &key_repeat &kp BSPC
-    &kp TAB &kp A   &kp R   &kp S   &kp T   &kp G     /*split*/    &kp M   &kp N   &kp E   &kp I   &kp O       &kp RET
+    &kp ESC &kp Q   &kp W   &kp F   &kp P   &kp B     /*split*/    &kp J   &kp L   &kp U   &kp Y   &kp SV_A_RING    &kp SV_A_UMLAUT
+    &kp TAB &kp A   &kp R   &kp S   &kp T   &kp G     /*split*/    &kp M   &kp N   &kp E   &kp I   &kp O            &kp SV_O_UMLAUT
             &kp Z   &kp X   &kp C   &kp D   &kp V     /*split*/    &kp K   &kp H   &kp SV_COMMA &kp SV_DOT &kp SV_MINUS 
                             &mo SYM &mo NAV &kp LSHFT &to 0        &kp SPACE &mo NUM &mo ADJ
 
@@ -167,10 +175,10 @@
 //                          |       |       | A(F4) |     split     |  BSPC |  DEL  |       |
 //                          -------------------------               -------------------------
       bindings = <
-    &trans  &kp LA(LEFT) &win_swap    &tab_swap    &vd_swap     &kp LGUI     /*split*/   &kp HOME  &kp PG_DN &kp PG_UP &kp END   &none         &trans
-    &trans  &sk LGUI     &sk LALT     &sk LCTRL    &sk LSHFT    &none        /*split*/   &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &none         &trans
-            &none        &none        &none        &none        &vd_mgr      /*split*/   &kp TAB   &kp INS   &kp SV_O_UMLAUT &kp SV_A_UMLAUT &kp SV_A_RING
-                                      &trans       &trans       &kp LA(F4)   &trans      &kp BSPC  &kp DEL   &trans
+    &trans  &prev_next  &win_swap   &tab_swap   &vd_swap    &kp LGUI     /*split*/   &kp HOME   &kp PG_DN   &kp PG_UP   &kp END     &none       &trans
+    &trans  &sk LGUI    &sk LALT    &sk LCTRL   &sk LSHFT   &none        /*split*/   &kp LEFT   &kp DOWN    &kp UP      &kp RIGHT   &none       &trans
+            &none       &none       &none       &none       &vd_mgr      /*split*/   &kp TAB    &kp INS     &kp SV_O_UMLAUT &kp SV_A_UMLAUT &kp SV_A_RING
+                                    &trans      &trans      &kp LA(F4)   &trans      &kp BSPC   &kp DEL     &trans
 
                         >;
 
