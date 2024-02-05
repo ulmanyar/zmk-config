@@ -79,7 +79,6 @@
         behaviors {
                 win_swap: win_swapper {
                         compatible = "zmk,behavior-tri-state";
-                        label = "WIN SWAPPER";
                         #binding-cells = <0>;
                         bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
                         ignored-key-positions = <16 19>;
@@ -87,7 +86,6 @@
 
                 tab_swap: tab_swapper {
                         compatible = "zmk,behavior-tri-state";
-                        label = "TAB SWAPPER";
                         #binding-cells = <0>;
                         bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
                         ignored-key-positions = <16 19>;
@@ -95,7 +93,6 @@
 
                 vd_swap: vd_swapper {
                         compatible = "zmk,behavior-mod-morph";
-                        label = "VD SWAPPER";
                         #binding-cells = <0>;
                         bindings = <&kp LC(LG(RIGHT))>, <&kp LC(LG(LEFT))>;
                         mods = <(MOD_LSFT)>;
@@ -103,7 +100,6 @@
 
                 vd_mgr: vd_manager {
                         compatible = "zmk,behavior-mod-morph";
-                        label = "VD MANAGER";
                         #binding-cells = <0>;
                         bindings = <&kp LC(LG(SV_D))>, <&kp LC(LG(F4))>;
                         mods = <(MOD_LSFT)>;
@@ -111,7 +107,6 @@
 
                 prev_next: previous_next {
                         compatible = "zmk,behavior-mod-morph";
-                        label = "PREVIOUS NEXT";
                         #binding-cells = <0>;
                         bindings = <&kp LA(LEFT)>, <&kp LA(RIGHT)>;
                         mods = <(MOD_LSFT)>;
@@ -145,19 +140,19 @@
       bindings = <
     &kp ESC &kp Q   &kp W   &kp F   &kp P   &kp B     /*split*/    &kp J   &kp L   &kp U   &kp Y   &kp SV_A_RING    &kp SV_A_UMLAUT
     &kp TAB &kp A   &kp R   &kp S   &kp T   &kp G     /*split*/    &kp M   &kp N   &kp E   &kp I   &kp O            &kp SV_O_UMLAUT
-            &kp Z   &kp X   &kp C   &kp D   &kp V     /*split*/    &kp K   &kp H   &kp SV_COMMA &kp SV_DOT &kp SV_MINUS 
+            &kp Z   &kp X   &kp C   &kp D   &kp V     /*split*/    &kp K   &kp H   &kp SV_COMMA &kp SV_DOT &kp SV_MINUS
                             &mo SYM &mo NAV &kp LSHFT &to 1        &kp SPACE &mo NUM &mo ADJ
 
                         >;
                 sensor-bindings = <&inc_dec_kp LC(LEFT) LC(RIGHT)>;
                 };
-                
+
                 // Setup multiple "default layers" with different encoder bindings and toggle using encoder button
                 default_layer_enc_1 {
       bindings = <
     &kp ESC &kp Q   &kp W   &kp F   &kp P   &kp B     /*split*/    &kp J   &kp L   &kp U   &kp Y   &kp SV_A_RING    &kp SV_A_UMLAUT
     &kp TAB &kp A   &kp R   &kp S   &kp T   &kp G     /*split*/    &kp M   &kp N   &kp E   &kp I   &kp O            &kp SV_O_UMLAUT
-            &kp Z   &kp X   &kp C   &kp D   &kp V     /*split*/    &kp K   &kp H   &kp SV_COMMA &kp SV_DOT &kp SV_MINUS 
+            &kp Z   &kp X   &kp C   &kp D   &kp V     /*split*/    &kp K   &kp H   &kp SV_COMMA &kp SV_DOT &kp SV_MINUS
                             &mo SYM &mo NAV &kp LSHFT &to 0        &kp SPACE &mo NUM &mo ADJ
 
                         >;
@@ -165,7 +160,7 @@
                 };
 
                 navigation_layer {
-//          -----------------------------------------               ----------------------------------------- 
+//          -----------------------------------------               -----------------------------------------
 // ---------|  BACK | WinSwp| TabSwp| VDSwp |  LGUI |     split     |  HOME | PG DN | PG UP |  END  |       |---------
 // |  ESC   |----------------------------------------               ----------------------------------------|  BSPC  |
 // ---------|  LGUI |  LALT | LCTRL | LSHFT |       |     split     |  LEFT |  DOWN |   UP  | RIGHT |       |---------
@@ -201,11 +196,11 @@
                                         &trans        &trans        &kp CAPS      &trans      &trans        &trans        &trans
 
                         >;
-                        
+
                 };
 
                 number_layer {
-//          -----------------------------------------               ----------------------------------------- 
+//          -----------------------------------------               -----------------------------------------
 // ---------|       |   7   |   8   |   9   |   +   |     split     |   ´   |   ^   |   ~   |   ¨   |       |---------
 // |  ESC   |----------------------------------------               ----------------------------------------|  BSPC  |
 // ---------|   /   |   4   |   5   |   6   |   =   |     split     |   `   | LSHFT | LCTRL |  LALT |  LGUI |---------
@@ -217,7 +212,7 @@
       bindings = <
     &trans  &none        &kp N7    &kp N8    &kp N9   &kp SV_PLUS  /*split*/ &kp SV_ACUTE &kp SV_CARET &kp SV_TILDE &kp SV_UMLAUT &none        &trans
     &trans  &kp SV_SLASH &kp N4    &kp N5    &kp N6   &kp SV_EQUAL /*split*/ &kp SV_GRAVE &sk LSHFT    &sk LCTRL    &sk LALT      &sk LGUI     &trans
-            &kp SV_ASTRK &kp N1    &kp N2    &kp N3   &kp SV_MINUS /*split*/ &none        &none        &none        &none         &none  
+            &kp SV_ASTRK &kp N1    &kp N2    &kp N3   &kp SV_MINUS /*split*/ &none        &none        &none        &none         &none
                                 &kp SV_COMMA &kp N0   &kp SV_DOT    &trans   &trans       &tog NUM     &trans
 
                         >;
@@ -237,8 +232,8 @@
       bindings = <
     &none   &none   &kp F7  &kp F8  &kp F9  &kp F10 /*split*/   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4  &out OUT_BLE
     &none   &none   &kp F4  &kp F5  &kp F6  &kp F11 /*split*/   &none        &sk LSHFT    &sk LCTRL    &sk LALT     &sk LGUI      &out OUT_USB
-            &none   &kp F1  &kp F2  &kp F3  &kp F12 /*split*/   &sys_reset   &bootloader  &bt BT_CLR   &none        &none       
-                            &trans  &trans  &trans &kp C_MUTE   &trans       &tog NUM     &trans  
+            &none   &kp F1  &kp F2  &kp F3  &kp F12 /*split*/   &sys_reset   &bootloader  &bt BT_CLR   &none        &none
+                            &trans  &trans  &trans &kp C_MUTE   &trans       &tog NUM     &trans
                         >;
 
                 };

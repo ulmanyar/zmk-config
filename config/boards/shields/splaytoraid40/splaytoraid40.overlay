@@ -27,7 +27,6 @@
 
     kscan_left: kscan_left {
         compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN_LEFT";
         diode-direction = "col2row";
 
         col-gpios
@@ -54,7 +53,6 @@
 
     center_encoder: encoder_center {
 		compatible = "alps,ec11";
-		label = "CENTER_ENCODER";
 		a-gpios = <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
 		b-gpios = <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
 		steps = <96>;
