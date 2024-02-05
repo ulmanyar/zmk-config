@@ -11,23 +11,28 @@
 
 
 &spi0 {
-	compatible = "raspberrypi,pico-spi";
-	status = "okay";
-
-	pinctrl-0 = <&spi0_default>;
-	pinctrl-names = "default";
-
 	led_strip: ws2812@0 {
 		compatible = "worldsemi,ws2812-spi";
 
 		/* SPI */
 		reg = <0>; /* ignored, but necessary for SPI bindings */
-		spi-max-frequency = <4000000>;
 
 		/* WS2812 */
 		chain-length = <18>; /* arbitrary; change at will */
-		spi-one-frame = <0x70>;
-		spi-zero-frame = <0x40>;
+        /* These are settings from https://www.empirical.ee/zephyr/ */
+        /*
+         * Sample values from Nordic for these settings are utter garbage. From first principles:
+         * WS2812 requires 1.25us +/- 0.6us frame period. For an 8-bit frame, that's 6.4MHz
+         * Zero frame is 0.4us high, 0.85us low. +/- 0.15us.
+         * One  frame is 0.8us high, 0.45us low. +/- 0.15us.
+         *
+         * Requesting 6.5MHz gets us 4MHz, so let's do 8MHz instead.
+         * At 8 MHz, 3 bits is 0.375us, 6 bits is 0.75us, period is 1.0us,
+         * all of which is good enough for us.
+         */
+        spi-max-frequency = <8000000>;
+        spi-one-frame = <0xFC>;
+        spi-zero-frame = <0xE0>;
 		color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
 	};
 };
