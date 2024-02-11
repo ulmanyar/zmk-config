@@ -1,0 +1,37 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    macros {
+        throttle_insert: throttle_insert {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&kp ESC &kp I>
+                , <&macro_pause_for_release>
+                , <&kp ESC>
+                ;
+        };
+        throttle_after: throttle_after {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&kp ESC &kp A>
+                , <&macro_pause_for_release>
+                , <&kp ESC>
+                ;
+        };
+    };
+};
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+                &throttle_insert &throttle_after
+            >;
+        };
+    };
+};

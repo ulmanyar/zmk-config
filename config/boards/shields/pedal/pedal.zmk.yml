@@ -1,0 +1,9 @@
+file_format: "1"
+id: pedal
+name: pedal
+type: shield
+url: https://github.com/ulmanyar/zmk-config/
+requires:
+  - seeeduino_xiao_rp2040
+features:
+  - keys
