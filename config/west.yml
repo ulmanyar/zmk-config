@@ -8,10 +8,15 @@ manifest:
     - name: caksoylar
       #Use branch caksoylar/experimental
       url-base: https://github.com/caksoylar
+    - name: petejohanson
+      url-base: https://github.com/petejohanson
   projects:
     - name: zmk
       remote: caksoylar
       revision: caksoylar/experimental
       import: app/west.yml
+    - name: cirque-input-module
+      remote: petejohanson
+      revision: main
   self:
     path: config
