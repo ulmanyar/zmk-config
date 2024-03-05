@@ -1,5 +1,7 @@
 #include <dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
 #include <dt-bindings/led/led.h>
+#include <freq.h>
+
 
 &pinctrl {
     spi0_default: spi0_default {
@@ -8,14 +10,16 @@
         };
     };
 
-    i2c1_default: i2c1_default {
+    spi1_default: spi1_default {
         group1 {
-            pinmux = <I2C1_SDA_P10>;
-            input-enable;
+            pinmux = <SPI1_TX_P15>;
         };
         group2 {
-            pinmux = <I2C1_SCL_P11>;
+            pinmux = <SPI1_RX_P12>;
             input-enable;
+        };
+        group3 {
+            pinmux = <SPI1_SCK_P14>;
         };
     };
 };
@@ -49,46 +53,31 @@
 };
 
 
+&spi1 {
+    status = "okay";
+    pinctrl-0 = <&spi1_default>;
+    pinctrl-names = "default";
+    clock-frequency = <DT_FREQ_M(2)>;
+    cirque:cirque@2a {
+        compatible = "cirque,pinnacle";
+        spi-max-frequency = <DT_FREQ_M(13)>;
+        reg = <0x2a>;
+        status = "okay";
+        dr-gpios = <&gpio0 16 (GPIO_ACTIVE_HIGH)>;
+        sensitivity = "2x";
+        sleep;
+        no-taps;
+    };
+};
+
 / {
 	chosen {
 		zmk,underglow = &led_strip;
 	};
-};
 
-
-&i2c1 {
-    status = "okay";
-    glidepoint: glidepoint@2a {
-        compatible = "cirque,pinnacle";
-        reg = <0x2a>;
-        status = "okay";
-        dr-gpios = <&gpio0 9 (GPIO_ACTIVE_HIGH)>;
-
-        sensitivity = "4x";
-        // sleep;
-        no-taps;
-    };
-    // Rotation config, from Pete
-    // This will change in the future
-    // https://discord.com/channels/719497620560543766/845285481888743434/1206407883777114182
-    input_config {
-        compatible = "zmk,input-configs";
-
-        cirque_config {
-            device = <&glidepoint>;
-            xy-swap;
-            y-invert;
-            x-invert;
-        };
-    };
-};
-
-
-/ {
-    glidepoint_listener {
+    cirque_listener:cirque_listener {
         compatible = "zmk,input-listener";
-        device = <&glidepoint>;
-
+        device = <&cirque>;
         xy-swap;
         y-invert;
         x-invert;

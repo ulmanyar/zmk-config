@@ -9,5 +9,6 @@ features:
   - keys
   - underglow
   - encoder
+  - pointer
 exposes:
-  - spi_glidepoint
+  - spi_cirque
