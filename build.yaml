@@ -13,10 +13,10 @@
 #
 ---
 include:
-  - board: seeeduino_xiao_rp2040
-    shield: pedal
-  #- board: sparkfun_pro_micro_rp2040
-  #  shield: splaytoraid40
+  #- board: seeeduino_xiao_rp2040
+  #  shield: pedal
+  - board: sparkfun_pro_micro_rp2040
+    shield: splaytoraid40
   #- board: seeeduino_xiao_ble
   #  shield: zilpzalp
   #- board: seeeduino_xiao_rp2040
