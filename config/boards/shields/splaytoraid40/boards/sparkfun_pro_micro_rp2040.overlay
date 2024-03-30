@@ -9,19 +9,6 @@
             pinmux = <SPI0_TX_P3>;
         };
     };
-
-    spi1_default: spi1_default {
-        group1 {
-            pinmux = <SPI1_TX_P15>;
-        };
-        group2 {
-            pinmux = <SPI1_RX_P12>;
-            input-enable;
-        };
-        group3 {
-            pinmux = <SPI1_SCK_P14>;
-        };
-    };
 };
 
 
@@ -53,29 +40,40 @@
 };
 
 
-&spi1 {
+&i2c0 {
     status = "okay";
-    pinctrl-0 = <&spi1_default>;
-    pinctrl-names = "default";
-    clock-frequency = <DT_FREQ_M(2)>;
-    cirque:cirque@2a {
+    cirque: cirque@2a {
         compatible = "cirque,pinnacle";
-        spi-max-frequency = <DT_FREQ_M(13)>;
         reg = <0x2a>;
         status = "okay";
-        dr-gpios = <&gpio0 16 (GPIO_ACTIVE_HIGH)>;
-        sensitivity = "2x";
-        sleep;
-        no-taps;
+        dr-gpios = <&gpio0 14 (GPIO_ACTIVE_HIGH)>;
+
+        sensitivity = "1x";
+        // sleep;
+        // no-taps;
+    };
+    // Rotation config, from Pete
+    // This will change in the future
+    // https://discord.com/channels/719497620560543766/845285481888743434/1206407883777114182
+    input_config {
+        compatible = "zmk,input-configs";
+
+        cirque_config {
+            device = <&cirque>;
+            xy-swap;
+            y-invert;
+            x-invert;
+        };
     };
 };
+
 
 / {
 	chosen {
 		zmk,underglow = &led_strip;
 	};
 
-    cirque_listener:cirque_listener {
+    cirque_listener {
         compatible = "zmk,input-listener";
         device = <&cirque>;
         xy-swap;

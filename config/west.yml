@@ -10,11 +10,39 @@ manifest:
       url-base: https://github.com/caksoylar
     - name: petejohanson
       url-base: https://github.com/petejohanson
+    - name: ulmanyar
+      url-base: https://github.com/ulmanyar
   projects:
     - name: zmk
       remote: caksoylar
       revision: caksoylar/experimental
       import: app/west.yml
+    - name: zephyr
+      remote: ulmanyar
+      revision: fix_rp2040_i2c1
+      clone-depth: 1
+      import:
+        # TODO: Rename once upstream offers option like `exclude` or `denylist`
+        name-blacklist:
+          - ci-tools
+          - hal_altera
+          - hal_cypress
+          - hal_infineon
+          - hal_microchip
+          - hal_nxp
+          - hal_openisa
+          - hal_silabs
+          - hal_xtensa
+          - hal_st
+          - hal_ti
+          - loramac-node
+          - mcuboot
+          - mcumgr
+          - net-tools
+          - openthread
+          - edtt
+          - trusted-firmware-m
+          - sof
     - name: cirque-input-module
       remote: petejohanson
       revision: main
