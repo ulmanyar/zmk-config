@@ -44,7 +44,7 @@ manifest:
           - trusted-firmware-m
           - sof
     - name: cirque-input-module
-      remote: petejohanson
+      remote: ulmanyar
       revision: main
   self:
     path: config
