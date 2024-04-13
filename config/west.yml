@@ -45,6 +45,6 @@ manifest:
           - sof
     - name: cirque-input-module
       remote: ulmanyar
-      revision: main
+      revision: enable-absolute
   self:
     path: config

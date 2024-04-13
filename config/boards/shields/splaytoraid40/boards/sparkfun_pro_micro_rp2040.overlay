@@ -49,6 +49,7 @@
         dr-gpios = <&gpio0 14 (GPIO_ACTIVE_HIGH)>;
 
         sensitivity = "1x";
+        abs-mode;
         // sleep;
         // no-taps;
     };
