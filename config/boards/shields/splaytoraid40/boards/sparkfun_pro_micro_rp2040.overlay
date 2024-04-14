@@ -49,6 +49,7 @@
         dr-gpios = <&gpio0 14 (GPIO_ACTIVE_HIGH)>;
 
         sensitivity = "1x";
+        rotate-90;
         abs-mode;
         // sleep;
         // no-taps;
@@ -61,7 +62,7 @@
 
         cirque_config {
             device = <&cirque>;
-            xy-swap;
+            //xy-swap;
             y-invert;
             x-invert;
         };
