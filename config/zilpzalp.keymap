@@ -16,11 +16,14 @@
 #define VD_CLOSE        LC(LG(F4))
 
 &lt {
-        tapping-term-ms = <125>;
+        flavor = "tap-preferred";
+        require-prior-idle-ms = <125>;
+        tapping-term-ms = <175>;
+        retro-tap;
 };
 
 &mt {
-        retro-tap;
+        flavor = "hold-preferred";
 };
 
 &sk {
@@ -204,7 +207,7 @@
             bindings = <
                                 &kp N7          &kp N8          &kp N9          &kp SV_PLUS     &kp SV_ACUTE    &kp SV_CARET    &kp SV_TILDE    &kp SV_UMLAUT
                 &kp SV_ASTRK    &kp N4          &kp N5          &kp N6          &kp SV_MINUS    &kp SV_GRAVE    &sk LSHFT       &sk LCTRL       &sk LALT        &sk LGUI
-                                &kp N1          &kp N2          &kp N3                                          &kp SV_CURREN   &kp SV_POUND_SIGN &tog FUN 
+                                &kp N1          &kp N2          &kp N3                                          &kp SV_CURREN   &kp SV_POUND_SIGN &tog FUN
                                                                 &kp N0          &kp SV_DOT      &none           &none
             >;
         };
