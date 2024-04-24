@@ -9,6 +9,8 @@
 #define NUM 3
 #define FUN 4
 
+#define COMBO_IDLE 150
+
 // Keycode defines
 #define VD_NEW          LC(LG(D))
 #define VD_LEFT         LC(LG(LEFT))
@@ -63,20 +65,17 @@
                         key-positions = <5 6 7>;
                         bindings = <&kp LA(BACKSPACE)>;
                 };
-                combo_capslock {
-                        timeout-ms = <25>;
-                        key-positions = <11 14>;
-                        bindings = <&kp CAPSLOCK>;
-                };
                 combo_tab {
                         timeout-ms = <25>;
                         key-positions = <10 11>;
                         bindings = <&kp TAB>;
+                        require-prior-idle-ms = <COMBO_IDLE>;
                 };
                 combo_return {
                         timeout-ms = <50>;
                         key-positions = <16 17>;
                         bindings = <&kp RET>;
+                        require-prior-idle-ms = <COMBO_IDLE>;
                 };
                 combo_q {
                         timeout-ms = <35>;
@@ -109,18 +108,21 @@
                         timeout-ms = <50>;
                         key-positions = <8 17>;
                         bindings = <&kp SV_MINUS>;
+                        require-prior-idle-ms = <COMBO_IDLE>;
                 };
                 combo_bootloader {
                         timeout-ms = <50>;
                         key-positions = <18 19 20>;
                         layers = <NAV>;
                         bindings = <&bootloader>;
+                        require-prior-idle-ms = <COMBO_IDLE>;
                 };
                 combo_reset {
                         timeout-ms = <50>;
                         key-positions = <21 22 23>;
                         layers = <NUM>;
                         bindings = <&sys_reset>;
+                        require-prior-idle-ms = <COMBO_IDLE>;
                 };
         };
 
